@@ -34,3 +34,21 @@ while True:
         pyb.delay(zaman)
     pyb.delay(1000)
 
+import pyb
+
+# LED nesnelerini bir liste içinde tanımlayalım
+leds = [pyb.LED(1), pyb.LED(2), pyb.LED(3), pyb.LED(4)]
+bekle = 250  # Gecikme süresi (ms)
+
+while True:
+    # LED'leri ileri doğru yak
+    for led in leds:
+        led.on()
+        pyb.delay(bekle)
+        led.off()
+
+    # LED'leri geri doğru yak
+    for led in reversed(leds[:-1]):  # Son LED’i iki kez yakmamak için son elemanı çıkarıyoruz
+        led.on()
+        pyb.delay(bekle)
+        led.off()
